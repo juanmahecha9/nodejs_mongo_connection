@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../src/config/network.config.js"],"names":["module","exports","port","bind"],"mappings":";;AAAAA,MAAM,CAACC,OAAP,GAAiB;AACbC,EAAAA,IAAI,EAAE,IADO;AAEbC,EAAAA,IAAI,EAAE;AAFO,CAAjB","sourcesContent":["module.exports = {\n    port: 4500,\n    bind: \"0.0.0.0\",\n  };\n  "],"file":"network.config.js"}
