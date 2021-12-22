@@ -6,6 +6,8 @@ var _fs = _interopRequireDefault(require("fs"));
 
 var _console = require("console");
 
+var _jsontoexcel = _interopRequireDefault(require("../lib/functions/jsontoexcel.convert"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 const indexCtrl = {};
@@ -30,11 +32,13 @@ indexCtrl.eventRoute = async (req, res) => {
 };
 
 indexCtrl.eventRouteGet = async (req, res) => {
+  await _fs.default.unlinkSync("./src/public/doc/data.json");
+  setTimeout(function () {}, 1000);
   const evento = await _Events.default.find();
   let data_temp = JSON.stringify(evento);
 
   try {
-    _fs.default.writeFile("./src/public/doc/data.txt", data_temp, err => {
+    _fs.default.writeFile("./src/public/doc/data.json", data_temp, err => {
       if (err) {
         throw _console.error;
       }
