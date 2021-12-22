@@ -26,7 +26,7 @@ indexCtrl.eventRouteGet = async (req, res) =>{
     const evento = await EVENT_.find();
     let data_temp = JSON.stringify(evento)
     try{
-        fs.writeFile("data.txt", data_temp, (err)=>{
+        fs.writeFile("./src/public/doc/data.txt", data_temp, (err)=>{
             if(err){
                 throw error;
             }

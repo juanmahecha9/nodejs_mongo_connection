@@ -15,35 +15,41 @@
 
 <body>
     <%- include('partials/navigation')  %>
-
-    <table class="table" style="margin-top: 15px;">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">DATE</th>
-                <th scope="col">ID CHAT</th>
-                <th scope="col">EVENT NAME</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% for(let count=1; count <=evento.length; count++ ){ %>
+<br>
+<hr>
+<br>
+<a style="margin-left: 15px;" href="doc/data.txt" download>Download JSON File</a>
+<br>
+    <container >
+        <table class="table" style="margin-top: 15px;">
+            <thead>
                 <tr>
-                    <th scope="row">
-                        <%= count %>
-                    </th>
-                    <td>
-                        <%= evento[count-1].date%>
-                    </td>
-                    <td>
-                        <%= evento[count-1].id_chat%>
-                    </td>
-                    <td>
-                        <%= evento[count-1].event_name%>
-                    </td>
+                    <th scope="col">#</th>
+                    <th scope="col">DATE</th>
+                    <th scope="col">ID CHAT</th>
+                    <th scope="col">EVENT NAME</th>
                 </tr>
-                <% } %>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                <% for(let count=1; count <=evento.length; count++ ){ %>
+                    <tr>
+                        <th scope="row">
+                            <%= count %>
+                        </th>
+                        <td>
+                            <%= evento[count-1].date%>
+                        </td>
+                        <td>
+                            <%= evento[count-1].id_chat%>
+                        </td>
+                        <td>
+                            <%= evento[count-1].event_name%>
+                        </td>
+                    </tr>
+                    <% } %>
+            </tbody>
+        </table>
+    </container>
 
 </body>
 

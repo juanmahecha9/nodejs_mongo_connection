@@ -34,7 +34,7 @@ indexCtrl.eventRouteGet = async (req, res) => {
   let data_temp = JSON.stringify(evento);
 
   try {
-    _fs.default.writeFile("data.txt", data_temp, err => {
+    _fs.default.writeFile("./src/public/doc/data.txt", data_temp, err => {
       if (err) {
         throw _console.error;
       }
