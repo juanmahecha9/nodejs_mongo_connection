@@ -25,9 +25,11 @@ indexCtrl.eventRoute = async (req, res) => {
 let show = "juan"
 
 indexCtrl.eventRouteDropFile = async (req, res) => {
+    let name_date = new Date().toString();
+
   const evento = await EVENT_.find();
   let data_temp = JSON.stringify(evento);
-  fs.writeFile("./src/public/doc/data.json", data_temp, (err) => {
+  fs.writeFile(`./src/public/doc/data.json`, data_temp, (err) => {
     if (err) {
       throw error;
     }
@@ -37,7 +39,8 @@ indexCtrl.eventRouteDropFile = async (req, res) => {
   res.render("index", {
     title: "EVENTS EZRA",
     evento: evento,
-    show : true
+    show : true,
+    url_download: `./src/public/doc/data.json`
   });
 };
 
