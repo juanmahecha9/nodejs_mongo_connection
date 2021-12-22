@@ -6,7 +6,7 @@ var _fs = _interopRequireDefault(require("fs"));
 
 var _console = require("console");
 
-var _jsontoexcel = _interopRequireDefault(require("../lib/functions/jsontoexcel.convert"));
+var _locationHref = _interopRequireDefault(require("location-href"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -31,24 +31,44 @@ indexCtrl.eventRoute = async (req, res) => {
   }
 };
 
+let show = "juan";
+
+indexCtrl.eventRouteDropFile = async (req, res) => {
+  const evento = await _Events.default.find();
+  let data_temp = JSON.stringify(evento);
+
+  _fs.default.writeFile("./src/public/doc/data.json", data_temp, err => {
+    if (err) {
+      throw _console.error;
+    }
+
+    console.log("ok");
+  });
+
+  res.render("index", {
+    title: "EVENTS EZRA",
+    evento: evento,
+    show: true
+  });
+};
+
 indexCtrl.eventRouteGet = async (req, res) => {
-  await _fs.default.unlinkSync("./src/public/doc/data.json");
-  setTimeout(function () {}, 1000);
+  const path = "./src/public/doc/data.json";
+
+  if (_fs.default.existsSync(path)) {
+    console.log("archivo existente");
+
+    _fs.default.unlinkSync(path);
+  }
+
   const evento = await _Events.default.find();
   let data_temp = JSON.stringify(evento);
 
   try {
-    _fs.default.writeFile("./src/public/doc/data.json", data_temp, err => {
-      if (err) {
-        throw _console.error;
-      }
-
-      console.log("ok");
-    });
-
-    res.render('index', {
-      title: 'EVENTS EZRA',
-      evento: evento
+    res.render("index", {
+      title: "EVENTS EZRA",
+      evento: evento,
+      show: false
     });
   } catch (err) {
     res.send(err);
