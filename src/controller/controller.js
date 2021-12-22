@@ -1,6 +1,7 @@
 import EVENT_ from "../models/Events";
 import fs from 'fs'
 import { error } from "console";
+import convertToExcel from "../lib/functions/jsontoexcel.convert";
 
 const indexCtrl = {};
 
@@ -23,10 +24,14 @@ indexCtrl.eventRoute = async (req, res) =>{
 }
 
 indexCtrl.eventRouteGet = async (req, res) =>{
+    
+    await fs.unlinkSync("./src/public/doc/data.json")
+    setTimeout(function(){},1000)
+
     const evento = await EVENT_.find();
     let data_temp = JSON.stringify(evento)
     try{
-        fs.writeFile("./src/public/doc/data.txt", data_temp, (err)=>{
+        fs.writeFile("./src/public/doc/data.json", data_temp, (err)=>{
             if(err){
                 throw error;
             }
