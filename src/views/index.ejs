@@ -20,13 +20,13 @@
         <br>
         <div class="container m-4">
             <% if(show){%>
-                <a href="https://ezra-events-monitoring.herokuapp.com/events" >RETURN DATA TABLE</a>
+                <a href="http://localhost:4500/events" >RETURN DATA TABLE</a>
                 <% }%>
         </div>
         <br>
         <div class="container m-4">
             <% if(!show){%>
-                <a href="https://ezra-events-monitoring.herokuapp.com/events/drop">SHOW JSON DATA</a>
+                <a href="http://localhost:4500/events/drop">SHOW JSON DATA</a>
                 <% }%>
                     <% if(show){%>
                         [<%= evento %>]

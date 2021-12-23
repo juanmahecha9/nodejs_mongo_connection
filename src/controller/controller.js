@@ -1,7 +1,7 @@
 import EVENT_ from "../models/Events";
 import fs from "fs";
 import { error } from "console";
-import location from "location-href";
+import {state300,state400, state500} from '../common/error_messages'
 
 const indexCtrl = {};
 
@@ -22,7 +22,6 @@ indexCtrl.eventRoute = async (req, res) => {
     res.send(err);
   }
 };
-let show = "juan"
 
 indexCtrl.eventRouteDropFile = async (req, res) => {
     let name_date = new Date().toString();
