@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../../../src/database/connection/dev/config.js"],"names":["mongodbURL","process","env","MONGODB_URI_dev"],"mappings":";;;;;;;AAAA;;AACA;eAEe;AACXA,EAAAA,UAAU,EAAEC,OAAO,CAACC,GAAR,CAAYC;AADb,C","sourcesContent":["import {config} from 'dotenv'\nconfig();\n\nexport default {\n    mongodbURL: process.env.MONGODB_URI_dev\n}"],"file":"config.js"}
