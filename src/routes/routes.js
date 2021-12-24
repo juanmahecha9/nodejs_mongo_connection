@@ -7,5 +7,5 @@ router.get("/", indexCrtl.mainRoute);
 router.post("/event/save/:id/:event", indexCrtl.eventRoute);
 router.get("/events", indexCrtl.eventRouteGet);
 router.get("/events/drop", indexCrtl.eventRouteDropFile);
-
+router.get("/events/backup/:id", indexCrtl.eventRouteCreateBackup)
 module.exports = router;

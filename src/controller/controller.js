@@ -24,7 +24,6 @@ indexCtrl.eventRoute = async (req, res) => {
 };
 
 indexCtrl.eventRouteDropFile = async (req, res) => {
-    let name_date = new Date().toString();
 
   const evento = await EVENT_.find();
   let data_temp = JSON.stringify(evento);
@@ -51,15 +50,32 @@ indexCtrl.eventRouteGet = async (req, res) => {
   }
   const evento = await EVENT_.find();
   let data_temp = JSON.stringify(evento);
+  let date = new Date();
   try {
     res.render("index", {
       title: "EVENTS EZRA",
       evento: evento,
-      show : false
+      show : false,
+      date: date
     });
   } catch (err) {
     res.send(err);
   }
 };
+
+indexCtrl.eventRouteCreateBackup = async (req, res) =>{
+  let name_date = new Date().toString();
+  const evento = await EVENT_.find();
+  let count_data_ = evento.length.toString()
+  let data_temp = JSON.stringify(evento);
+  fs.writeFile(`./src/public/doc/backup/backup_db_${count_data_}_${name_date}.json`, data_temp, (err) => {
+    if (err) {
+      throw error;
+    } else{
+      res.send("backup creado")
+    }
+  });
+}
+
 
 module.exports = indexCtrl;

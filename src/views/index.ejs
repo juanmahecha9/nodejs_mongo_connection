@@ -16,55 +16,64 @@
 <body>
     <%- include('partials/navigation') %>
         <br>
-        <hr>
-        <br>
-        <div class="container m-4">
-            <% if(show){%>
-                <a href="http://localhost:4500/events" >RETURN DATA TABLE</a>
-                <% }%>
-        </div>
-        <br>
-        <div class="container m-4">
-            <% if(!show){%>
-                <a href="http://localhost:4500/events/drop">SHOW JSON DATA</a>
-                <% }%>
-                    <% if(show){%>
-                        [<%= evento %>]
-                        <% }%>
-        </div>
         <% if(!show){%>
-            <div class="container m-2">
-
-                <table class="table" style="margin-top: 15px;">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">DATE</th>
-                            <th scope="col">ID CHAT</th>
-                            <th scope="col">EVENT NAME</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <% for(let count=1; count <=evento.length; count++ ){ %>
-                            <tr>
-                                <th scope="row">
-                                    <%= count %>
-                                </th>
-                                <td>
-                                    <%= evento[count-1].date%>
-                                </td>
-                                <td>
-                                    <%= evento[count-1].id_chat%>
-                                </td>
-                                <td>
-                                    <%= evento[count-1].event_name%>
-                                </td>
-                            </tr>
-                            <% } %>
-                    </tbody>
-                </table>
-            </div>
+            <h5 class="text-center">
+                <%= date %>
+            </h5>
             <% }%>
+                <hr>
+                <h3 class="text-center">
+                    Event count: <%= evento.length %>
+                </h3>
+                <br>
+                <div class="container">
+                    <% if(show){%>
+                        <a href="http://localhost:4500/events">RETURN DATA TABLE</a>
+                        <% }%>
+                </div>
+                <br>
+                <div class="container">
+                    <% if(!show){%>
+                        <a href="http://localhost:4500/events/drop">SHOW JSON DATA</a>
+                        <% }%>
+                            <% if(show){%>
+                                <%= evento %>
+                                    <% }%>
+                </div>
+                <div class=" text-center">
+                </div>
+                <% if(!show){%>
+                    <div class="container">
+                        <table class="table" style="margin-top: 15px;">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">DATE</th>
+                                    <th scope="col">ID CHAT</th>
+                                    <th scope="col">EVENT NAME</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% for(let count=1; count <=evento.length; count++ ){ %>
+                                    <tr>
+                                        <th scope="row">
+                                            <%= count %>
+                                        </th>
+                                        <td>
+                                            <%= evento[count-1].date%>
+                                        </td>
+                                        <td>
+                                            <%= evento[count-1].id_chat%>
+                                        </td>
+                                        <td>
+                                            <%= evento[count-1].event_name%>
+                                        </td>
+                                    </tr>
+                                    <% } %>
+                            </tbody>
+                        </table>
+                    </div>
+                    <% }%>
 
 
 
